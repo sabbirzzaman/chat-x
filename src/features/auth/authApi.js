@@ -1,4 +1,3 @@
-import { data } from 'autoprefixer';
 import { apiSlice } from '../api/apiSlice';
 import { userLoggedIn } from './authSlice';
 
@@ -32,7 +31,7 @@ export const authApi = apiSlice.injectEndpoints({
             },
         }),
         login: builder.mutation({
-            query: () => ({
+            query: (data) => ({
                 url: '/login',
                 method: 'POST',
                 body: data,
