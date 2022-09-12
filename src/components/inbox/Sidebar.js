@@ -1,6 +1,6 @@
-import { useState } from "react";
-import ChatItems from "./ChatIItems";
-import Modal from "./Modal";
+import { useState } from 'react';
+import ChatItems from './ChatIItems';
+import Modal from './Modal';
 // import Blank from "./Blank";
 
 export default function Sidebar() {
