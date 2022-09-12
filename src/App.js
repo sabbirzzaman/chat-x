@@ -24,6 +24,14 @@ function App() {
                     }
                 />
                 <Route
+                    path="/login"
+                    element={
+                        <AuthRoute>
+                            <Login />
+                        </AuthRoute>
+                    }
+                />
+                <Route
                     path="/register"
                     element={
                         <AuthRoute>

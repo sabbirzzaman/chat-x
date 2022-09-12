@@ -11,7 +11,7 @@ export default function Navigation() {
         localStorage.clear()
     }
     return (
-        <nav className="border-general sticky top-0 z-40 border-b bg-[#0B1120] transition-colors">
+        <nav className="border-general sticky top-0 z-40 border-b border-[#f8fafc14] bg-[#0B1120] transition-colors">
             <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between h-16 items-center">
                     <Link to="/">

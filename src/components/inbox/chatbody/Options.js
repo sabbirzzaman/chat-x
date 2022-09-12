@@ -1,6 +1,6 @@
 export default function Options() {
     return (
-        <div className="flex items-center justify-between w-full p-3 border-t border-gray-300">
+        <div className="flex items-center justify-between w-full p-3 border-t border-[#f8fafc14]">
             <input
                 type="text"
                 placeholder="Message"

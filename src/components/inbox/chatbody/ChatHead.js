@@ -10,7 +10,7 @@ export default function ChatHead({ message }) {
     const partnerName = sender.email !== email ? sender.name : receiver.name;
 
     return (
-        <div className="relative flex items-center p-3 border-b border-gray-300">
+        <div className="relative flex items-center p-3 border-b border-[#f8fafc14]">
             <img
                 className="object-cover w-10 h-10 rounded-full"
                 src={gravatarUrl(partnerEmail, {size: 80})}
