@@ -4,7 +4,7 @@ import Sidebar from "../components/inbox/Sidebar";
 
 export default function Inbox() {
     return (
-        <div>
+        <div className="bg-slate-900">
             <Navigation />
             <div className="max-w-7xl mx-auto -mt-1">
                 <div className="min-w-full border rounded flex lg:grid lg:grid-cols-3">
