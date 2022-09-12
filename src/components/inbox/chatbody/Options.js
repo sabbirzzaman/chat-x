@@ -3,14 +3,14 @@ export default function Options() {
         <div className="flex items-center justify-between w-full p-3 border-t border-[#f8fafc14]">
             <input
                 type="text"
-                placeholder="Message"
-                className="block w-full py-2 pl-4 mx-3 bg-gray-100 focus:ring focus:ring-violet-500 rounded-full outline-none focus:text-gray-700"
+                placeholder="Message..."
+                className="block text-slate-100 w-full py-2 pl-4 mx-3 border placeholder-gray-400 border-[#f8fafc14] bg-slate-800 focus:ring focus:ring-[#0284c7] rounded-lg outline-none focus:text-slate-100"
                 name="message"
                 required
             />
             <button type="submit">
                 <svg
-                    className="w-5 h-5 text-gray-500 origin-center transform rotate-90"
+                    className="w-5 h-5 text-slate-200 origin-center transform rotate-90"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"

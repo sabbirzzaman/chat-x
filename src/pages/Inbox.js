@@ -7,7 +7,7 @@ export default function Inbox() {
         <div className="bg-slate-900">
             <Navigation />
             <div className="max-w-7xl mx-auto -mt-1">
-                <div className="min-w-full border rounded flex lg:grid lg:grid-cols-3">
+                <div className="min-w-full border border-[#f8fafc14] rounded flex lg:grid lg:grid-cols-3">
                     <Sidebar />
                     <ChatBody />
                 </div>

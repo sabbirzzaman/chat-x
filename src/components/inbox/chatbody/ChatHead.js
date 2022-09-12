@@ -16,7 +16,7 @@ export default function ChatHead({ message }) {
                 src={gravatarUrl(partnerEmail, {size: 80})}
                 alt={'name'}
             />
-            <span className="block ml-2 font-bold text-gray-600">{partnerName}</span>
+            <span className="block ml-2 font-bold text-slate-100">{partnerName}</span>
         </div>
     );
 }
