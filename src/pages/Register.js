@@ -158,7 +158,7 @@ export default function Register() {
                         <div>
                             <button
                                 type="submit"
-                                className="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#0284c7] hover:bg-[#38bdf8] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0284c7]"
+                                className="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-slate-100 bg-[#0284c7] hover:bg-[#38bdf8] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0284c7]"
                                 disabled={isLoading}
                             >
                                 <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>

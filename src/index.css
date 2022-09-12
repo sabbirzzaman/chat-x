@@ -8,3 +8,7 @@
         grid-template-rows: auto 1fr auto;
     }
 }
+
+body {
+    background-color:  rgb(15 23 42 / 1);
+}
