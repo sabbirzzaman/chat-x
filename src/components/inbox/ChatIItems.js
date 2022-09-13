@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useGetConversationsQuery } from '../../features/conversations/conversationsApi';
 import Error from '../ui/Error';
 import ChatItem from './ChatItem';
@@ -6,12 +6,10 @@ import moment from 'moment';
 import getPartner from '../../utils/getPartner';
 import gravatarUrl from 'gravatar-url';
 import { Link } from 'react-router-dom';
-import { userLoggedOut } from '../../features/auth/authSlice';
 
 export default function ChatItems() {
     const { user } = useSelector((state) => state.auth) || {};
     const { email } = user || {};
-    const dispatch = useDispatch();
 
     const {
         data: conversations,
@@ -25,8 +23,6 @@ export default function ChatItems() {
 
     if (isLoading) {
         content = <li className="m-2 text-center">Loading...</li>;
-    } else if (error?.status === 401) {
-        dispatch(userLoggedOut());
     } else if (!isLoading && isError) {
         content = (
             <li className="m-2 text-center">

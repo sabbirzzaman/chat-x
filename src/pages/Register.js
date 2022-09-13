@@ -144,6 +144,7 @@ export default function Register() {
                                     type="checkbox"
                                     className="h-4 w-4 text-[#0284c7] focus:ring-[#0284c7] border-slate-500 rounded cursor-pointer"
                                     onChange={(e) => setAgreed(e.target.value)}
+                                    checked={agreed}
                                     required
                                 />
                                 <label

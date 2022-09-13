@@ -1,8 +1,6 @@
 // import Blank from "./Blank";
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { userLoggedOut } from '../../../features/auth/authSlice';
 import { useGetMessagesQuery } from '../../../features/messages/messagesApi';
 import Error from '../../ui/Error';
 import ChatHead from './ChatHead';
@@ -18,15 +16,11 @@ export default function ChatBody() {
         error,
     } = useGetMessagesQuery(id);
 
-    const dispatch = useDispatch();
-
     // manage content
     let content;
 
     if (isLoading) {
         content = <div className="m-2 text-center">Loading...</div>;
-    } else if (error?.status === 401) {
-        dispatch(userLoggedOut())
     } else if (!isLoading && isError) {
         content = (
             <div className="m-2 text-center">
