@@ -43,7 +43,7 @@ export default function Register() {
 
     return (
         <div className="grid place-items-center h-screen bg-slate-900">
-            <div class="absolute right-[28%] top-0 hidden h-[150px] w-[200px] rotate-12 rounded-3xl bg-gradient-to-l from-blue-600 to-sky-400 opacity-20 blur-3xl filter dark:block dark:opacity-30 lg:top-44 lg:right-30 lg:h-72 lg:w-[350px] xl:h-80 xl:w-[500px]"></div>
+            <div className="absolute right-[28%] top-0 hidden h-[150px] w-[200px] rotate-12 rounded-3xl bg-gradient-to-l from-blue-600 to-sky-400 opacity-20 blur-3xl filter dark:block dark:opacity-30 lg:top-44 lg:right-30 lg:h-72 lg:w-[350px] xl:h-80 xl:w-[500px]"></div>
             <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-md px-8 py-10 backdrop-blur-sm bg-slate-800/[0.5] rounded-2xl w-full space-y-8 ">
                     <div>

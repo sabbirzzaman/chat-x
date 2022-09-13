@@ -30,7 +30,7 @@ export default function ChatItems() {
             </li>
         );
     } else if (!isLoading && !isError && conversations.length === 0) {
-        content = <li className="m-2 text-center">No Conversation Found</li>;
+        content = <li className="m-2 text-slate-400 text-center">No Conversation Found</li>;
     } else if (!isLoading && !isError && conversations.length > 0) {
         content = conversations.map((conversation) => {
             const { id, users, message, timestamp } = conversation || {};

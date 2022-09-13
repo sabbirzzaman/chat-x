@@ -11,7 +11,7 @@ export default function Messages({ messages = [] }) {
                     const { id, message: lastMessage, sender } = message || {};
                     const { email } = user || {};
 
-                    const justify = sender.email !== email ? 'end' : 'start';
+                    const justify = sender.email !== email ? 'start' : 'end';
 
                     return <Message key={id} justify={justify} message={lastMessage} />;
                 })}

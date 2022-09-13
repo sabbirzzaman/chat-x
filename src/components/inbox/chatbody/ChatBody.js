@@ -31,7 +31,7 @@ export default function ChatBody() {
         content = (
             <>
                 <ChatHead message={messages[0]} />
-                <div className="m-2 text-center">No Conversation Found</div>
+                <div className="m-2 text-slate-400 text-center">No Conversation Found</div>
                 <Options />
             </>
         );
