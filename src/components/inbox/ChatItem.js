@@ -14,7 +14,7 @@ export default function ChatItem({ avatar, name, lastMessage, lastTime }) {
                     <span className="block ml-2 mb-1 font-semibold text-slate-100">
                         {name}
                     </span>
-                    <span className="block ml-2 text-sm text-slate-400">
+                    <span className="block ml-2 text-sm text-slate-400 mr-2">
                         {lastTime}
                     </span>
                 </div>

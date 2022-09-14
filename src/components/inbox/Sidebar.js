@@ -17,7 +17,7 @@ export default function Sidebar() {
             <div className="h-[65px] text-center text-slate-100 p-4 border-b border-[#f8fafc14] flex md:justify-end justify-center items-center">
                 <FontAwesomeIcon className='cursor-pointer' onClick={controlModal} icon={faUserPlus} />
             </div>
-            <div className="overflow-auto bg-[#0B1120] h-[calc(100vh_-_129px)]">
+            <div className="overflow-auto bg-[#0B1120] h-[calc(100vh_-_129px)] scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent overflow-y-scroll scrollbar-thumb-rounded-full">
                 <ChatItems />
             </div>
             {/* <Blank /> */}
