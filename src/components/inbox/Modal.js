@@ -24,7 +24,7 @@ export default function Modal({ open, control }) {
     const { data: participant } = useGetUsersQuery(to, {
         skip: !requestSkip,
     });
-    const [addConversation, { isSuccess: addConversationSuccess }] =
+    const [addConversation, { isSuccess: addConversationSuccess, }] =
         useAddConversationMutation();
     const [editConversation, { isSuccess: editConversationSuccess }] =
         useEditConversationMutation();
@@ -76,7 +76,7 @@ export default function Modal({ open, control }) {
         e.preventDefault();
         setMessage('');
 
-        if (conversation.length > 0) {
+        if (conversation?.length > 0) {
             // edit conversation
             editConversation({
                 id: conversation[0].id,
@@ -86,7 +86,7 @@ export default function Modal({ open, control }) {
                     timestamp: new Date().getTime(),
                 },
             });
-        } else if (conversation.length === 0) {
+        } else if (conversation?.length === 0) {
             // add conversation
             addConversation({
                 sender: myEmail,

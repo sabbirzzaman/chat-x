@@ -32,6 +32,7 @@ export default function ChatItems() {
     } else if (!isLoading && !isError && conversations.length === 0) {
         content = <li className="m-2 text-slate-400 text-center">No Conversation Found</li>;
     } else if (!isLoading && !isError && conversations.length > 0) {
+        // console.log(conversations)
         content = conversations.map((conversation) => {
             const { id, users, message, timestamp } = conversation || {};
 
