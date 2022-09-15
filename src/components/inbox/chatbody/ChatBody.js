@@ -9,12 +9,8 @@ import Options from './Options';
 
 export default function ChatBody() {
     const { id } = useParams();
-    const {
-        data: messages,
-        isLoading,
-        isError,
-        error,
-    } = useGetMessagesQuery(id);
+    const { data, isLoading, isError, error } = useGetMessagesQuery(id) || {};
+    const { data: messages, totalMessage } = data || {};
 
     // manage content
     let content;
@@ -31,7 +27,9 @@ export default function ChatBody() {
         content = (
             <>
                 <ChatHead message={messages[0]} />
-                <div className="m-2 text-slate-400 text-center">No Conversation Found</div>
+                <div className="m-2 text-slate-400 text-center">
+                    No Conversation Found
+                </div>
                 <Options />
             </>
         );
@@ -39,8 +37,8 @@ export default function ChatBody() {
         content = (
             <>
                 <ChatHead message={messages[0]} />
-                <Messages messages={messages} />
-                <Options messageInfo={messages[0]}/>
+                <Messages messages={messages} totalMessage={totalMessage} />
+                <Options messageInfo={messages[0]} />
             </>
         );
     }

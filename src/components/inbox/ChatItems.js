@@ -8,6 +8,8 @@ import gravatarUrl from 'gravatar-url';
 import { Link } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWarning } from '@fortawesome/free-solid-svg-icons';
 
 export default function ChatItems() {
     const { user } = useSelector((state) => state.auth) || {};
@@ -54,7 +56,8 @@ export default function ChatItems() {
         );
     } else if (!isLoading && !isError && conversations?.length === 0) {
         content = (
-            <li className="m-2 text-slate-400 text-center">
+            <li className="m-2 text-slate-400 text-center flex flex-col gap-3 justify-center py-10">
+                <FontAwesomeIcon className='text-xl' icon={faWarning} />
                 No Conversation Found
             </li>
         );
