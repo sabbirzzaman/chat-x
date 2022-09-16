@@ -16,7 +16,7 @@ export const conversationsApi = apiSlice.injectEndpoints({
                 arg,
                 { updateCachedData, cacheDataLoaded, cacheEntryRemoved }
             ) {
-                const socket = io('http://localhost:9000', {
+                const socket = io('https://server-chat-x.herokuapp.com', {
                     reconnectionDelay: 1000,
                     reconnection: true,
                     reconnectionAttempts: 10,
