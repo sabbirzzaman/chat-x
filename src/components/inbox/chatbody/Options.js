@@ -44,7 +44,7 @@ export default function Options({ messageInfo }) {
                 onChange={(e) => setMessage(e.target.value)}
                 required
             />
-            <button type="submit">
+            <button type="submit" className=''>
                 <svg
                     className="w-5 h-5 text-slate-200 origin-center transform rotate-90"
                     xmlns="http://www.w3.org/2000/svg"

@@ -1,3 +1,4 @@
+import gravatarUrl from 'gravatar-url';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import logoImage from '../../assets/images/lws-logo-dark.svg';
@@ -7,7 +8,7 @@ export default function Navigation() {
     const { user } = useSelector((state) => state.auth) || {};
     const dispatch = useDispatch();
 
-    const { name } = user || {};
+    const { name, email } = user || {};
 
     const handleLogout = () => {
         dispatch(userLoggedOut());
@@ -26,13 +27,35 @@ export default function Navigation() {
                     </Link>
                     <ul>
                         <li className="text-white">
-                            <span className='mx-3 font-semibold'>{name}</span>
-                            <span
-                                onClick={handleLogout}
-                                className="cursor-pointer text-slate-200 bg-slate-800 px-5 font-semibold py-2 rounded-lg hover:bg-slate-700 transition-all delay-75"
-                            >
-                                Logout
-                            </span>
+                            <div className="dropdown dropdown-end">
+                                <label
+                                    tabIndex="0"
+                                    className="btn btn-ghost rounded-lg px-2 w-full gap-2 btn-circle avatar"
+                                >
+                                    <span className='font-bold text-slate-100 text-lg'>{name}</span>
+                                    <div className="w-10 rounded-full">
+                                        <img
+                                            src={gravatarUrl(email, {
+                                                size: 80,
+                                            })}
+                                            alt={name}
+                                        />
+                                    </div>
+                                </label>
+                                <ul
+                                    tabIndex="0"
+                                    className="mt-3 p-2 shadow menu bg-[#0B1120] menu-compact dropdown-content rounded-lg w-52"
+                                >
+                                    <li>
+                                        <span
+                                            onClick={handleLogout}
+                                            className="cursor-pointer text-slate-200 bg-[#0B1120] hover:bg-slate-800 px-5 font-semibold py-2 rounded-lg transition-all delay-75"
+                                        >
+                                            Logout
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>
