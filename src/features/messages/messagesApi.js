@@ -30,6 +30,7 @@ export const messagesApi = apiSlice.injectEndpoints({
 
                     socket.on('message', ({ data }) => {
                         updateCachedData((draft) => {
+                            
                             draft.data.unshift(data);
                         });
                     });

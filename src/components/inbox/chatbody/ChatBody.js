@@ -12,6 +12,8 @@ export default function ChatBody() {
     const { data, isLoading, isError, error } = useGetMessagesQuery(id) || {};
     const { data: messages, totalMessage } = data || {};
 
+    const myMessages = messages?.filter(message => message.conversationId === Number(id));
+
     // manage content
     let content;
 
@@ -23,22 +25,22 @@ export default function ChatBody() {
                 <Error message={error.data}></Error>
             </div>
         );
-    } else if (!isLoading && !isError && messages.length === 0) {
+    } else if (!isLoading && !isError && myMessages?.length === 0) {
         content = (
             <>
-                <ChatHead message={messages[0]} />
+                {/* <ChatHead message={myMessages[0]} /> */}
                 <div className="m-2 text-slate-400 text-center">
                     No Conversation Found
                 </div>
-                <Options />
+                {/* <Options /> */}
             </>
         );
-    } else if (!isLoading && !isError && messages.length > 0) {
+    } else if (!isLoading && !isError && myMessages?.length > 0) {
         content = (
             <>
-                <ChatHead message={messages[0]} />
-                <Messages messages={messages} totalMessage={totalMessage} />
-                <Options messageInfo={messages[0]} />
+                <ChatHead message={myMessages[0]} />
+                <Messages messages={myMessages} totalMessage={totalMessage} />
+                <Options messageInfo={myMessages[0]} />
             </>
         );
     }

@@ -1,10 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import logoImage from '../../assets/images/lws-logo-dark.svg';
 import { userLoggedOut } from '../../features/auth/authSlice';
 
 export default function Navigation() {
+    const { user } = useSelector((state) => state.auth) || {};
     const dispatch = useDispatch();
+
+    const { name } = user || {};
 
     const handleLogout = () => {
         dispatch(userLoggedOut());
@@ -23,6 +26,7 @@ export default function Navigation() {
                     </Link>
                     <ul>
                         <li className="text-white">
+                            <span className='mx-3 font-semibold'>{name}</span>
                             <span
                                 onClick={handleLogout}
                                 className="cursor-pointer text-slate-200 bg-slate-800 px-5 font-semibold py-2 rounded-lg hover:bg-slate-700 transition-all delay-75"

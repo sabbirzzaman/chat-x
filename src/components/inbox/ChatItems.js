@@ -20,6 +20,8 @@ export default function ChatItems() {
 
     const { data: conversations, totalCount } = data || {};
 
+    const myConversations = conversations?.filter(conversation => conversation.participants.includes(email));
+
     const dispatch = useDispatch();
 
     // local states
@@ -47,24 +49,24 @@ export default function ChatItems() {
     let content;
 
     if (isLoading) {
-        content = <li className="m-2 text-center">Loading...</li>;
+        content = <li className="m-2 text-slate-200 text-center">Loading...</li>;
     } else if (!isLoading && isError) {
         content = (
             <li className="m-2 text-center">
                 <Error message={error.data}></Error>
             </li>
         );
-    } else if (!isLoading && !isError && conversations?.length === 0) {
+    } else if (!isLoading && !isError && myConversations?.length === 0) {
         content = (
             <li className="m-2 text-slate-400 text-center flex flex-col gap-3 justify-center py-10">
                 <FontAwesomeIcon className='text-xl' icon={faWarning} />
                 No Conversation Found
             </li>
         );
-    } else if (!isLoading && !isError && conversations?.length > 0) {
+    } else if (!isLoading && !isError && myConversations?.length > 0) {
         content = (
             <InfiniteScroll
-                dataLength={conversations?.length}
+                dataLength={myConversations?.length}
                 next={fetchMore}
                 hasMore={hasMore}
                 loader={
@@ -75,7 +77,7 @@ export default function ChatItems() {
                 height={window.innerHeight - 129}
                 className="scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent overflow-y-scroll scrollbar-thumb-rounded-full"
             >
-                {conversations.map((conversation) => {
+                {myConversations.map((conversation) => {
                     const { id, users, message, timestamp } =
                         conversation || {};
 
@@ -93,6 +95,7 @@ export default function ChatItems() {
                                     })}
                                     name={name}
                                     lastMessage={message}
+                                    id={id}
                                     lastTime={moment(timestamp).fromNow()}
                                 />
                             </Link>
