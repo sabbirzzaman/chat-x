@@ -35,11 +35,13 @@ export const conversationsApi = apiSlice.injectEndpoints({
                                 (c) => c.id == data?.id
                             );
 
+                            console.log(conversation)
+
                             if (conversation?.id) {
                                 conversation.message = data?.message;
                                 conversation.timestamp = data?.timestamp;
                             } else {
-                                draft.data.push(data);
+                                draft.data.unshift(data);
                             }
                         });
                     });
