@@ -1,7 +1,7 @@
 import gravatarUrl from 'gravatar-url';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import logoImage from '../../assets/images/lws-logo-dark.svg';
+import logoImage from '../../assets/images/logo.png';
 import { userLoggedOut } from '../../features/auth/authSlice';
 
 export default function Navigation() {
@@ -18,12 +18,13 @@ export default function Navigation() {
         <nav className="border-general sticky top-0 z-40 border-b border-[#f8fafc14] bg-[#0B1120] transition-colors">
             <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between h-16 items-center">
-                    <Link to="/">
+                    <Link className='flex items-center gap-3' to="/">
                         <img
                             className="h-10"
                             src={logoImage}
                             alt="Learn with Sumit"
                         />
+                        <h3 className='text-2xl font-bold uppercase text-slate-300'>Chat</h3>
                     </Link>
                     <ul>
                         <li className="text-white">
