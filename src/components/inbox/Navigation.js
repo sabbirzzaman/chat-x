@@ -33,7 +33,7 @@ export default function Navigation() {
                                     tabIndex="0"
                                     className="btn btn-ghost rounded-lg px-2 w-full gap-2 btn-circle avatar"
                                 >
-                                    <span className='font-bold text-slate-100 text-lg'>{name}</span>
+                                    <span className='font-bold text-slate-300 text-lg'>{name}</span>
                                     <div className="w-10 rounded-full">
                                         <img
                                             src={gravatarUrl(email, {
