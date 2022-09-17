@@ -9,7 +9,10 @@ export const messagesApi = apiSlice.injectEndpoints({
             transformResponse(apiResponse, meta) {
                 const totalMessage = meta.response.headers.get('X-Total-Count');
 
-                return { data: apiResponse, totalMessage: Number(totalMessage)};
+                return {
+                    data: apiResponse,
+                    totalMessage: Number(totalMessage),
+                };
             },
             async onCacheEntryAdded(
                 arg,
@@ -30,7 +33,6 @@ export const messagesApi = apiSlice.injectEndpoints({
 
                     socket.on('message', ({ data }) => {
                         updateCachedData((draft) => {
-                            
                             draft.data.unshift(data);
                         });
                     });
@@ -55,7 +57,9 @@ export const messagesApi = apiSlice.injectEndpoints({
                                 (draft) => {
                                     return {
                                         data: [...draft.data, ...resData],
-                                        totalMessage: Number(draft.totalMessage),
+                                        totalMessage: Number(
+                                            draft.totalMessage
+                                        ),
                                     };
                                 }
                             )

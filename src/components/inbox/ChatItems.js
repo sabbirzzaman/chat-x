@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { conversationsApi, useGetConversationsQuery } from '../../features/conversations/conversationsApi';
+import {
+    conversationsApi,
+    useGetConversationsQuery,
+} from '../../features/conversations/conversationsApi';
 import Error from '../ui/Error';
 import ChatItem from './ChatItem';
 import moment from 'moment';
@@ -20,7 +23,9 @@ export default function ChatItems() {
 
     const { data: conversations, totalCount } = data || {};
 
-    const myConversations = conversations?.filter(conversation => conversation.participants.includes(email));
+    const myConversations = conversations?.filter((conversation) =>
+        conversation.participants.includes(email)
+    );
 
     const dispatch = useDispatch();
 
@@ -33,23 +38,34 @@ export default function ChatItems() {
     };
 
     useEffect(() => {
-        if(page > 1) {
-            dispatch(conversationsApi.endpoints.getMoreConversations.initiate(({email, page})))
+        if (page > 1) {
+            dispatch(
+                conversationsApi.endpoints.getMoreConversations.initiate({
+                    email,
+                    page,
+                })
+            );
         }
-    }, [email, page, dispatch])
+    }, [email, page, dispatch]);
 
     useEffect(() => {
-        if(totalCount > 0) {
-            const hasMorePage = Math.ceil(totalCount / Number(process.env.REACT_APP_CONVERSATIONS_PER_PAGE)) > page;
-            setHasMore(hasMorePage)
+        if (totalCount > 0) {
+            const hasMorePage =
+                Math.ceil(
+                    totalCount /
+                        Number(process.env.REACT_APP_CONVERSATIONS_PER_PAGE)
+                ) > page;
+            setHasMore(hasMorePage);
         }
-    }, [totalCount, page])
+    }, [totalCount, page]);
 
     // manage content
     let content;
 
     if (isLoading) {
-        content = <li className="m-2 text-slate-200 text-center">Loading...</li>;
+        content = (
+            <li className="m-2 text-slate-200 text-center">Loading...</li>
+        );
     } else if (!isLoading && isError) {
         content = (
             <li className="m-2 text-center">
@@ -59,7 +75,7 @@ export default function ChatItems() {
     } else if (!isLoading && !isError && myConversations?.length === 0) {
         content = (
             <li className="m-2 text-slate-400 text-center flex flex-col gap-3 justify-center py-10">
-                <FontAwesomeIcon className='text-xl' icon={faWarning} />
+                <FontAwesomeIcon className="text-xl" icon={faWarning} />
                 No Conversation Found
             </li>
         );

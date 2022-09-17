@@ -1,10 +1,13 @@
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 export default function ChatItem({ avatar, name, lastMessage, lastTime, id }) {
-    const {id: chatId} = useParams();
+    const { id: chatId } = useParams();
+
     return (
         <div
-            className={`flex items-center px-3 py-3 text-sm transition duration-150 ease-in-out border-b border-[#f8fafc14] cursor-pointer hover:bg-slate-900 focus:outline-none ${id === Number(chatId) && 'bg-slate-900'}`}
+            className={`flex items-center px-3 py-3 text-sm transition duration-150 ease-in-out border-b border-[#f8fafc14] cursor-pointer hover:bg-slate-900 focus:outline-none ${
+                id === Number(chatId) && 'bg-slate-900'
+            }`}
             to="/"
         >
             <img

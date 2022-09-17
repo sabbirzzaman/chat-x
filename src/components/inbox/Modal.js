@@ -22,9 +22,10 @@ export default function Modal({ open, control }) {
     const dispatch = useDispatch();
 
     const { data: participant } = useGetUsersQuery(to, {
+        refetchOnMountOrArgChange: true,
         skip: !requestSkip,
     });
-    const [addConversation, { isSuccess: addConversationSuccess, }] =
+    const [addConversation, { isSuccess: addConversationSuccess }] =
         useAddConversationMutation();
     const [editConversation, { isSuccess: editConversationSuccess }] =
         useEditConversationMutation();
@@ -35,7 +36,7 @@ export default function Modal({ open, control }) {
                 conversationsApi.endpoints.getConversation.initiate({
                     userEmail: myEmail,
                     participantEmail: to,
-                })
+                }, {forceRefetch: true})
             )
                 .unwrap()
                 .then((data) => {
@@ -43,7 +44,7 @@ export default function Modal({ open, control }) {
                 })
                 .catch((err) => setResErr('There is something wrong!'));
         }
-    }, [dispatch, myEmail, participant, to]);
+    }, [dispatch, myEmail, participant, to, addConversationSuccess, editConversationSuccess]);
 
     useEffect(() => {
         if (addConversationSuccess || editConversationSuccess) {

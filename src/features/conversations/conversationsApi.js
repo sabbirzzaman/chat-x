@@ -14,7 +14,11 @@ export const conversationsApi = apiSlice.injectEndpoints({
             },
             async onCacheEntryAdded(
                 arg,
-                { updateCachedData, cacheDataLoaded, cacheEntryRemoved }
+                {
+                    updateCachedData,
+                    cacheDataLoaded,
+                    cacheEntryRemoved
+                }
             ) {
                 const socket = io('https://server-chat-x.herokuapp.com', {
                     reconnectionDelay: 1000,
@@ -32,7 +36,7 @@ export const conversationsApi = apiSlice.injectEndpoints({
                     socket.on('conversation', ({ data }) => {
                         updateCachedData((draft) => {
                             const conversation = draft?.data?.find(
-                                (c) => c.id == data?.id
+                                (c) => Number(c.id) === Number(data?.id)
                             );
 
                             if (conversation?.id) {
@@ -87,18 +91,6 @@ export const conversationsApi = apiSlice.injectEndpoints({
                 { sender, data },
                 { queryFulfilled, dispatch }
             ) {
-                // optimistic update start
-                // const pathResult = dispatch(
-                //     apiSlice.util.updateQueryData(
-                //         'getConversations',
-                //         sender,
-                //         (draft) => {
-                //             draft.data.push(data);
-                //         }
-                //     )
-                // );
-                // optimistic update end
-
                 try {
                     const { data: resData } = (await queryFulfilled) || {};
 
@@ -110,7 +102,6 @@ export const conversationsApi = apiSlice.injectEndpoints({
                             (user) => user.email !== sender
                         );
 
-                        // const res =
                         await dispatch(
                             messagesApi.endpoints.addMessage.initiate({
                                 conversationId: resData.id,
@@ -120,23 +111,8 @@ export const conversationsApi = apiSlice.injectEndpoints({
                                 timestamp: resData.timestamp,
                             })
                         );
-
-                        // Pessimistic cache update
-                        // const { data } = res || {};
-
-                        // dispatch(
-                        //     apiSlice.util.updateQueryData(
-                        //         'getMessages',
-                        //         data.conversationId.toString(),
-                        //         (draft) => {
-                        //             draft.push(data);
-                        //         }
-                        //     )
-                        // );
                     }
-                } catch (err) {
-                    // pathResult.undo();
-                }
+                } catch (err) {}
             },
         }),
         editConversation: builder.mutation({
@@ -156,14 +132,14 @@ export const conversationsApi = apiSlice.injectEndpoints({
                         sender,
                         (draft) => {
                             const draftConversation = draft?.data?.find(
-                                (conversation) => conversation.id == id
+                                (conversation) =>
+                                    Number(conversation.id) === Number(id)
                             );
                             draftConversation.message = data.message;
                             draftConversation.timestamp = data.timestamp;
                         }
                     )
                 );
-                // optimistic update end
 
                 try {
                     const { data: resData } = (await queryFulfilled) || {};
@@ -186,19 +162,6 @@ export const conversationsApi = apiSlice.injectEndpoints({
                                 timestamp: resData.timestamp,
                             })
                         );
-
-                        // Pessimistic cache update
-                        // const { data } = res || {};
-
-                        // dispatch(
-                        //     apiSlice.util.updateQueryData(
-                        //         'getMessages',
-                        //         data.conversationId.toString(),
-                        //         (draft) => {
-                        //             draft.push(data);
-                        //         }
-                        //     )
-                        // );
                     }
                 } catch (err) {
                     pathResult.undo();
